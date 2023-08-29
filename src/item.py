@@ -44,3 +44,6 @@ class Item:
             for row in reader:
                 item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
 
+    @staticmethod
+    def string_to_number(number):
+        return int(float(number))
