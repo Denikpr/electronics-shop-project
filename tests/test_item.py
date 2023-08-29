@@ -16,3 +16,8 @@ def test_apply_discount(test_item):
 
 def test_name(test_item):
     assert test_item.name == "суперсмарт"
+
+def test_string_to_number(test_item):
+    assert Item.string_to_number('10') == 10
+    assert Item.string_to_number('7.0') == 7
+    assert Item.string_to_number('5.5') == 5
