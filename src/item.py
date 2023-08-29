@@ -29,20 +29,3 @@ class Item:
     @property
     def name(self):
         return self.__name
-
-    @name.setter
-    def name(self, name):
-        self.__name = name[:10]
-
-
-    @classmethod
-    def instantiate_from_csv(cls):
-        cls.all.clear()
-        with open(PATH_ABSOLUTE, encoding='windows-1251') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
-
-    @staticmethod
-    def string_to_number(number):
-        return int(float(number))
