@@ -25,4 +25,5 @@ def test_string_to_number(test_item):
 def test_repr(test_item):
     assert repr(test_item) == "Item('суперсмарт', 5000, 20)"
 
-
+def test_str(test_item):
+    assert str(test_item) == 'суперсмарт'
