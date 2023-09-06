@@ -11,6 +11,8 @@ def test_calculate_total_price(test_item):
 
 def test_apply_discount(test_item):
     test_item.pay_rate = 2
+def test_repr(test_item):
+    assert repr(test_item) == "Item('суперсмарт', 5000, 20)"
     test_item.apply_discount()
     assert test_item.price == 10000
 
@@ -24,6 +26,7 @@ def test_string_to_number(test_item):
 
 def test_repr(test_item):
     assert repr(test_item) == "Item('суперсмарт', 5000, 20)"
+
 
 def test_str(test_item):
     assert str(test_item) == 'суперсмарт'

@@ -4,6 +4,7 @@ import os
 FILENAME = 'items.csv'
 PATH_ABSOLUTE = os.path.join(os.path.dirname(__file__), FILENAME)
 
+
 class Item:
     pay_rate = 1.0
     all = []
@@ -36,11 +37,9 @@ class Item:
     def name(self):
         return self.__name
 
-
     @name.setter
     def name(self, name):
         self.__name = name[:10]
-
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -54,3 +53,6 @@ class Item:
     def string_to_number(number):
         return int(float(number))
 
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.quantity + other.quantity
