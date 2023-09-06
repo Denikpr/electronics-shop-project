@@ -30,3 +30,5 @@ def test_repr(test_item):
 def test_str(test_item):
     assert str(test_item) == 'суперсмарт'
 
+def test_add(test_item,other):
+    assert add(test_item, other) == 25
