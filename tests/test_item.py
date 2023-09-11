@@ -17,7 +17,7 @@ def test_repr(test_item):
     assert test_item.price == 10000
 
 def test_name(test_item):
-    assert test_item.name == "суперсмарт"
+    assert test_item.name == "суперсмартфон"
 
 def test_string_to_number(test_item):
     assert Item.string_to_number('10') == 10
@@ -25,8 +25,8 @@ def test_string_to_number(test_item):
     assert Item.string_to_number('5.5') == 5
 
 def test_repr(test_item):
-    assert repr(test_item) == "Item('суперсмарт', 5000, 20)"
+    assert repr(test_item) == "Item('суперсмартфон', 5000, 20)"
 
 
 def test_str(test_item):
-    assert str(test_item) == 'суперсмарт'
+    assert str(test_item) == 'суперсмартфон'
