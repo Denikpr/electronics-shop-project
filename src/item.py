@@ -11,7 +11,7 @@ class Item:
 
     def __init__(self, name, price, quantity):
         self.price = price
-        self.__name = name[:10]
+        self.__name = name
         self.quantity = quantity
         Item.all.append(self)
 
