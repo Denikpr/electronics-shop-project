@@ -7,7 +7,7 @@ def test_phone():
 
 @pytest.fixture()
 def test_phone2():
-    return Phone("Samsung", 100_000, 2, 1)
+    return Phone("Samsung", 100_000, 2, 0)
 
 def test_name(test_phone):
     assert test_phone.name == "Nokia"
