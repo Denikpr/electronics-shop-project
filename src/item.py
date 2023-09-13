@@ -38,8 +38,9 @@ class Item:
         return self.__name
 
     @name.setter
-    def name(self, name):
+    def name(self, name,language):
         self.__name = name[:10]
+        self.__language = language
 
     @classmethod
     def instantiate_from_csv(cls):
