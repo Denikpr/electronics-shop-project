@@ -49,7 +49,7 @@ class Item:
             with open(PATH_ABSOLUTE, encoding='windows-1251') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                  item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
+                    item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
         except FileNotFoundError:
             print("_Отсутствует файл item.csv_")
 
