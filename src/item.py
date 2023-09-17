@@ -1,7 +1,7 @@
 import csv
 import os
 
-FILENAME = 'items.csv'
+FILENAME = '__items.csv'
 PATH_ABSOLUTE = os.path.join(os.path.dirname(__file__), FILENAME)
 
 
@@ -38,17 +38,25 @@ class Item:
         return self.__name
 
     @name.setter
-    def name(self, name,language):
+    def name(self, name, language):
         self.__name = name[:10]
         self.__language = language
 
     @classmethod
     def instantiate_from_csv(cls):
+        try:
+            # Открытие файла в режиме чтения
+            file = open(PATH_ABSOLUTE, "r")
+        except FileNotFoundError:
+            # Обработка ошибки, возникающей в том случае, если файл не найден
+            print("_Отсутствует файл item.csv_")
+            exit()
         cls.all.clear()
         with open(PATH_ABSOLUTE, encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
+
 
     @staticmethod
     def string_to_number(number):
