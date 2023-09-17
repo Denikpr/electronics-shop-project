@@ -1,7 +1,7 @@
 import csv
 import os
 
-FILENAME = '__items.csv'
+FILENAME = 'items.csv'
 PATH_ABSOLUTE = os.path.join(os.path.dirname(__file__), FILENAME)
 
 
@@ -51,7 +51,6 @@ class Item:
                 for row in reader:
                   item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
         except FileNotFoundError:
-            # Обработка ошибки, возникающей в том случае, если файл не найден
             print("_Отсутствует файл item.csv_")
 
     @staticmethod
