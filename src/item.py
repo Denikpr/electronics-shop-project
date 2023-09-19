@@ -4,6 +4,19 @@ import os
 FILENAME = 'items.csv'
 PATH_ABSOLUTE = os.path.join(os.path.dirname(__file__), FILENAME)
 
+class Script:
+    def __init__(self, row):
+        self.row = row
+        if 'name' in self.row and 'price' in row and 'quantity' in row:
+            pass
+        else:
+            raise InstantiateCSVError
+
+
+class InstantiateCSVError(Exception):
+    def __init__(self):
+        self.message = "_Файл item.csv поврежден_"
+
 
 class Item:
     pay_rate = 1.0
@@ -38,17 +51,26 @@ class Item:
         return self.__name
 
     @name.setter
-    def name(self, name,language):
+    def name(self, name, language):
         self.__name = name[:10]
         self.__language = language
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls, file=FILENAME):
         cls.all.clear()
-        with open(PATH_ABSOLUTE, encoding='windows-1251') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
+        path_absolute = os.path.join(os.path.dirname(__file__), file)
+        try:
+            with open(path_absolute, encoding='windows-1251') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    try_row = Script(row)
+                    item = cls(row['name'], Item.string_to_number(row['price']), Item.string_to_number(row['quantity']))
+        except InstantiateCSVError as ex:
+            print(ex.message)
+            return ex.message
+        except FileNotFoundError:
+            print("_Отсутствует файл item.csv_")
+            return "_Отсутствует файл item.csv_"
 
     @staticmethod
     def string_to_number(number):
